@@ -1,0 +1,22 @@
+version: '2.2'
+
+services:
+    nginx:
+        build:
+            context: ./
+            dockerfile: docker/nginx/Dockerfile
+        volumes:
+            - ./:/var/www
+        ports:
+            - "8080:80"
+        links:
+            - php-fpm
+    php-fpm:
+        build:
+            context: ./docker/php
+        volumes:
+            - ./:/var/www
+        environment:
+            - "PHP_IDE_CONFIG=serverName=localhost"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"

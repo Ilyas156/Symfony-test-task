@@ -15,6 +15,7 @@
         "symfony/yaml": "6.3.*"
     },
     "require-dev": {
+        "psalm/plugin-symfony": "*"
     },
     "config": {
         "allow-plugins": {
